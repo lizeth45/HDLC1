@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HDLC</title>
+        <link rel="shortcut icon" href="./Icons/iconpg.png" type="image/x-icon">
+        <link rel="stylesheet" href="./CSS/estilos.css">
+        <link rel="stylesheet" href="./CSS/normalize.css">
+        <!--Importando la libreria de Bootstrap-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </head>
+    
+    <body>
+
+        <header class="hero">
+            <nav class="nav container"> 
+
+              <div class="nav_logotipo">
+                <img src="./Icons/HDLC.png" alt="" class="nav_logoicon">
+              </div>
+
+                <div class="nav_logo">
+                    <h2 class="nav_title">Hospital De La Cruz</h2>
+                </div>
+                    
+                <ul class="nav_link nav_link--menu">
+                    <li class="nav_items">
+                        <a href="#Inicio" class="nav_links">Inicio</a>
+                    </li>
+                    <li class="nav_items">
+                        <a href="#Acerca_de" class="nav_links">Acerca de</a>
+                    </li>
+                    <li class="nav_items">
+                        <a href="./src/LogIn.php" class="nav_links">Iniciar Sesión</a>
+                    </li>
+                </ul>
+            </nav>        
+            
+            <section class="hero_container container">
+                <h1 class="hero_title">¿Cansado(a) de hacer filas para tramitar una cita médica?</h1>
+                <p class="hero_paragraph">Con esta herramienta digital podrás agendar una cita desde la comodidad de tu hogar sin necesidad de acudir al hospital.</p>
+                <a href="./src/SelecTU.php" class="cta">Registrate</a>
+            </section>
+        </header>
+
+        <main>
+          <section class="container about" id="Inicio">
+            <h2 class="subtitle">¿Qué podrás encontrar en nuestra página web?</h2>
+            <p class="about_paragraph">El sitio web del Hospital De La Cruz cuenta con un sistema de control de:</p>
+            <div class="about_main">
+              <article class="about_icons">
+                <img src="./Icons/usuarios.png" alt="" class="about_icon">
+                <h3 class="about_title">Usuarios</h3>
+                <p class="about_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto et incidunt aliquid quos.</p>
+              </article>
+
+              <article class="about_icons">
+                <img src="./Icons/Doctores.png" alt="" class="about_icon">
+                <h3 class="about_title">Doctores</h3>
+                <p class="about_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto et incidunt aliquid quos.</p>
+              </article>
+
+              <article class="about_icons">
+                <img src="./Icons/pacientes.png" alt="" class="about_icon">
+                <h3 class="about_title">Pacientes</h3>
+                <p class="about_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto et incidunt aliquid quos.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="knowledge" id="Acerca_de">
+            <div class="knowledge_container container">
+              <div class="knowledge_texts">
+                <h2 class="subtitle">Acerca de nosotros...</h2>
+                <p class="knowledge_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse voluptates sequi at harum enim nostrum beatae sint, perspiciatis nam tenetur fugit amet dignissimos, minima sapiente officia adipisci quasi quibusdam laudantium.</p>
+              </div>
+
+              <figure class="knowledge_picture">
+                <img src="./Icons/hospital-abt.png" alt="" class="knowledge_img">
+              </figure>
+            </div>
+          </section>
+        </main>
+    </body>
+</html>
