@@ -37,6 +37,151 @@ body.dark{
     --text-color: #CCC;
 }
 
+/* === Popup Info Doctores === */
+
+.info-docs.active .overlay{
+    opacity: 1;
+    pointer-events: auto;
+    transition: var(--tran-03);
+}
+
+.overlay{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 99; 
+}
+
+.info-docs.active .popup{
+    opacity: 1;
+    pointer-events: auto;
+    transition: var(--tran-03);
+}
+
+.popup{
+    position: absolute;
+    display: flex;
+    max-width: 1000px;
+    width: 100%;
+    border-radius: 24px;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 30px 20px;
+    background-color: #FFF;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.dark .popup{
+    background-color: var(--sidebar-color);
+}
+
+.popup .popup-info{
+    position: absolute;
+    max-width: 600px;
+    flex-direction: column;
+}
+
+.popup .popup-info .buttons .cerrar-btn{
+    padding: 12px 50px;
+    margin: 90px 10px;
+    border: none;
+    background: #087ea1;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 400;
+    color: #FFF;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .popup .popup-info .buttons .cerrar-btn{
+    background: var(--primary-color);
+    color: #FFF;
+}
+
+.popup .popup-info .cerrar-btn:hover{
+    background: #1f656e;
+}
+
+body.dark .popup .popup-info .cerrar-btn:hover{
+    background: var(--text-color);
+    transition: var(--tran-02);
+    color: var(--sidebar-color);
+}
+
+.popup .popup-info i {
+    font-size: 35px;
+    color: #087ea1;
+
+}
+
+body.dark .popup .popup-info i{
+    color: #FFF;
+}
+
+.popup .popup-info h2{
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;    
+}
+
+body.dark .popup .popup-info h2{
+    color: #CCC;
+}
+
+.popup .popup-info h3{
+    font-size: 18px;
+    font-weight: 450;
+    color: #333;    
+}
+
+body.dark .popup .popup-info h3{
+    color: #CCC;
+}
+
+.popup .popup-info h4{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;    
+}
+
+body.dark .popup .popup-info h4{
+    color: #CCC;
+}
+
+.popup .imagepop{
+    width: 200px;
+    height: 350px;
+    margin-left: 75%;
+}
+
+.popup .imagepop img{
+    height: 100%;
+    width: 100%;
+    display: block;
+    margin: auto;
+    font-size: 35px;
+    object-fit: cover;
+    border-radius: 24px;
+    padding: 2px;
+    border: 5px solid #087ea1;
+}
+
+body.dark .popup .imagepop img{
+    border: 5px solid #CCC;
+}
+
 /* === Sidebar === */
 
 .sidebar{
@@ -48,7 +193,7 @@ body.dark{
     padding: 10px 14px;
     background: var(--sidebar-color);
     transition: var(--tran-05);
-    z-index: 100;
+    z-index: 98;
 }
 
 .sidebar.close{
@@ -142,6 +287,7 @@ header .image-text .header-text{
     color: var(--sidebar-color);
     font-size: 22px;
     transition: var(--tran-03);
+    cursor: pointer;
 }
 
 .sidebar.close header .toggle{
@@ -273,8 +419,17 @@ body.dark .switch::before{
     left: 24px;
 }
 
-.home{
-    position: relative;
+/* === Dashboard === */
+
+.iupac.menu .citas,
+.iupac .citas{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iupac .home,
+.iupac.menu .home{
+    position: absolute;
     height: 100vh;
     left: 250px;
     width: calc(100% - 250px);
@@ -282,21 +437,36 @@ body.dark .switch::before{
     transition: var(--tran-05);
 }
 
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 8px 40px;
+.iupac .home .text,
+.iupac.menu .home .text{
+    color: #17334e;
+    padding: 10px 40px;
 }
 
-.sidebar.close ~ .home{
+body.dark .iupac .home .text,
+body.dark .iupac.menu .home .text{
+    color: #CCC;
+}
+
+.sidebar.close ~ .iupac .home{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+.sidebar.close ~ .iupac.menu .home{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+.sidebar.close ~ .iupac.cita .citas{
     left: 88px;
     width: calc(100% - 88px);
 }
 
 /*--- Swiper Docs ---*/
 
-.home .docs{
+.iupac .home .docs,
+.iupac.menu .home .docs{
     position: absolute; 
     top: 35%;
     left: 50%;
@@ -321,6 +491,10 @@ body.dark .switch::before{
     align-items: center;
 }
 
+body.dark .hero_title{
+    color: #CCC;
+}
+
 .swiper{
     width: 950px;
   }
@@ -332,6 +506,10 @@ body.dark .switch::before{
     margin: 20px 0;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   }
+
+  body.dark .card{
+    background: var(--sidebar-color);
+  }
   
   .card::before{
     content: "";
@@ -342,6 +520,10 @@ body.dark .switch::before{
     border-radius: 20px 20px 0 0;
   }
   
+  body.dark .card::before{
+    background: rgb(148, 148, 148);
+  }
+
   .card .card-content{
     display: flex;
     flex-direction: column;
@@ -358,13 +540,22 @@ body.dark .switch::before{
     padding: 3px;
     background: #06566e;
   }
+
+  body.dark section .card .image{
+    background: #FFF;
+  }
+
   
   section .card .image img{
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
-    border: 3px solid #fff;
+    border: 3px solid #CCC;
+  }
+  
+  body.dark section .card .image img {
+    border: 3px solid #272727;
   }
 
   .card .name-profession{
@@ -374,6 +565,10 @@ body.dark .switch::before{
     margin-top: 10px;
     color: #000000;
   } 
+
+  body.dark .card .name-profession{
+    color: #CCC;
+  }
   
   .name-profession .name{
     font-size: 20px;
@@ -404,9 +599,19 @@ body.dark .switch::before{
     cursor: pointer;
   }
   
-  .button button:hover{
+body.dark .card .button button {
+    background-color: var(--primary-color);
+    color: #FFF;
+}
+
+  .card .button button:hover{
     background: #1f656e;
   }
+
+body.dark .card .button button:hover {
+    background-color: #CCC;
+    color: var(--sidebar-color);
+}
   
   .swiper-pagination{
     position: absolute;
@@ -418,13 +623,51 @@ body.dark .switch::before{
     border-radius: 25px;
     background: #2abce8;
   }
+
+  body.dark .swiper-pagination-bullet{
+    background: #FFF;
+  }
   
   .swiper-button-next, .swiper-button-prev{
     opacity: 0.7;
     color: #2abce8;
     transition: all 0.3s ease;
   }
+
+  body.dark .swiper-button-next, body.dark .swiper-button-prev{
+    color: #CCC;
+  }
   .swiper-button-next:hover, .swiper-button-prev:hover{
     opacity: 1;
     color: #2abce8;
   }
+
+  body.dark .swiper-button-next:hover, body.dark .swiper-button-prev:hover{
+    color: #FFF;
+  }
+
+  /* === Agendar Citas === */
+
+.iupac.cita .home{
+    opacity: 0;
+    pointer-events: none;
+}
+.iupac.cita .citas{
+    opacity: 1;
+    position: absolute;
+    height: 100vh;
+    left: 250px;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.iupac.cita .citas .text{
+    color: #17334e;
+    padding: 10px 40px;
+}
+
+body.dark .iupac.cita .citas .text{
+    color: #CCC;
+}
+
