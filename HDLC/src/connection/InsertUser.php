@@ -5,85 +5,133 @@
     $query2;
     $query3;
     
-    if(isset($_POST['SEXO'])){
-
-        //Condicion para evaluar que se escogio una de las opciones
-        if(($sexo=$_POST['SEXO'])!="Elegir..."){
-            
-            //Variables para registro en entidad usuarios
+    //Si se recibe el submit de PacienteRegistro.php
+    if(isset($_POST['save_up'])){ 
+        
+        if(($sexo=$_POST['SEXO'])!="Elegir..."){ //Si ya escogio un sexo...
+            //Variables de usuario
             $correo=$_POST['correo'];
-            $consultaCorreo="SELECT COUNT(correo) FROM usuarios WHERE correo='$correo'";
-            $qCorreo=mysqli_query($con,$consultaCorreo);
-            $valor=mysqli_fetch_array($qCorreo);
-            
-            if($valor[0]==1){
-                mysqli_free_result($qCorreo);
-                mysqli_close($con);
-                Header("Location: ../Registro.php?error=Email en uso");
-            }else{
-                $pass=$_POST['pass'];
-                $nombre=strtoupper($_POST['nombre']);
-                $num_tel=$_POST['num_tel'];
+            $pass=$_POST['pass'];
+            $nombre=strtoupper($_POST['nombre']);
+            $num_tel=$_POST['num_tel'];
+            //$sexo --ya está arriba
+            $fechaNacimiento=date('Y-m-d', strtotime($_POST['fechaN'])); //Convirtiendo a formado YY-MM-DD
+            $edad=busca_edad($fechaNacimiento);
 
-                //Query
-                $insertUser="INSERT INTO usuarios VALUES('$correo','$pass','$nombre',$num_tel,'$sexo')";
+                //Verificando que el email sea como debe ser
+            if(filter_var($correo,FILTER_VALIDATE_EMAIL)){
+                //se hace consulta en usuarios con la direccion del correo
+                $consultaCorreo="SELECT COUNT(correo) FROM usuarios WHERE correo='$correo'";
+                $qCorreo=mysqli_query($con,$consultaCorreo);
+                $valor=mysqli_fetch_array($qCorreo);
+    
+                //SENTENCIA Insert en la tabla PACIENTE
+                $insertPaciente="INSERT INTO u_paciente(correo_pac) values('$correo')";
 
-                $tusuario=$_POST['TIPOUSER'];
-                if($tusuario=="PACIENTE"){
-                    
-                    //Insercion del usuario
-                    $query=mysqli_query($con,$insertUser);
-                    //Variable faltante para la entidad paciente
-                    $edad=$_POST['edad'];
-                    //Insercecion en db->TABLA  u_pacientes
-                    $insertPaciente="INSERT INTO u_paciente(correo_pac,edad) VALUES('$correo',$edad)";
-                    $query2=mysqli_query($con,$insertPaciente);
-                    //Si la insercion del paciente fue exitosa...
-                    if($query2=true){
-                        //Si todo fue bien en pacientes, se dirige a la siguiente pagina
-                        Header("Location: ../IUPaciente.php");
-                        //Liberando la consulta 
-                        mysqli_free_result($query2);
-                        mysqli_free_result($query);
+                if($valor[0]==1){ //SI EL EMAIL YA ESTA REGISTRADO EN USUARIOS
+                    Header("Location: ../PacienteRegistro.php?error=Email no disponible");
+                }else if($valor[0]==0){//SI EL EMAIL NO ESTA en usuarios
+
+                //Insercion del usuario
+                    $insertUsuario="INSERT INTO usuarios(correo,pass,nombre,num_tel,sexo,edad,fecha_nac) values ('$correo','$pass','$nombre',$num_tel,'$sexo',$edad,'$fechaNacimiento')";
+                    $QinsertUsuario=mysqli_query($con,$insertUsuario);
+
+                    //EJECUCION DEL INSERT EN PACIENTES
+                    $QinsertPaciente=mysqli_query($con,$insertPaciente);
+
+                    if($QinsertPaciente=true){
+                        //Si todo fue bien en la insercion de paciente, se dirige a la siguiente pagina
+                        mysqli_free_result($QinsertPaciente);
+                        mysqli_free_result($QinsertUsuario);
+                        mysqli_free_result($qCorreo);
                         mysqli_close($con);
+                        Header("Location: ../IUPaciente.php");
                     }else{
-                        Header("Location: ../Registro.php?error=Algo salio mal, intentalo de nuevo");
+                        Header("Location: ../PacienteRegistro.php?error=Algo salio mal, lo sentimos");
                     }
-
-                }else if($tusuario=="DOCTOR"){
-
-                    //Insercion del usuario
-                    $query=mysqli_query($con,$insertUser);
-                    
-                    //Variables para la entidad doctor
-                    $idEsp=$_POST['ESPECIALIDAD'];
-                    if($idEsp!="Elige..."){
-                        
-                        $cedula=$_POST['cedula'];
-                        //Insercecion en db->TABLA  u_doctor
-                        $insertDoctor="INSERT INTO u_doctor(correo_doc,id_esp,cedula) VALUES('$correo',$idEsp,$cedula)";
-                        $query3=mysqli_query($con,$insertDoctor);
-
-                        if($query3=true){
-                            //Si todo fue bien, se dirige a la siguiente pagina
-                            Header("Location: ../IUDoctor.php");
-                            mysqli_free_result($query3);
-                            mysqli_free_result($query);
-                            mysqli_close($con);
-                        }else{
-                            Header("Location: ../Registro.php?error=Algo salio mal, intentalo de nuevo");
-                        }
-
-                    }else{
-                        Header("Location: ../Registro.php?error=Seleccione una especialidad");
-                    }
-
-                }else{
-                    Header("Location: ../Registro.php?error=Selecciona el tipo de usuario");
                 }
+            }else{
+                Header("Location: ../PacienteRegistro.php?error=Email invalido");
             }
-        }else{
-            Header("Location: ../Registro.php?error=Selecciona un sexo");
+        }else{ //Si no selecciono un sexo...
+            mysqli_close($con);
+            Header("Location: ../PacienteRegistro.php?error=Selecciona un sexo");
         }
+
+        //---------------------------------DOCTORES-------------------------
+    }else if(isset($_POST['save_ud'])){
+        if(($sexo=$_POST['SEXO'])!="Elegir..."){ //Si ya escogio un sexo...
+            //Variables de usuario
+            $correo=$_POST['correo'];
+            $pass=$_POST['pass'];
+            $nombre=strtoupper($_POST['nombre']);
+            $num_tel=$_POST['num_tel'];
+            //$sexo --ya está arriba
+            $fechaNacimiento=date('Y-m-d', strtotime($_POST['fechaN'])); //Convirtiendo a formado YY-MM-DD
+            $edad=busca_edad($fechaNacimiento);
+           
+            //Verificando que el email sea como debe ser
+            if(filter_var($correo,FILTER_VALIDATE_EMAIL)){
+                //se hace consulta en usuarios con la direccion del correo
+                $consultaCorreo="SELECT COUNT(correo) FROM usuarios WHERE correo='$correo'";
+                $qCorreo=mysqli_query($con,$consultaCorreo);
+                $valor=mysqli_fetch_array($qCorreo);
+    
+                //SENTENCIA Insert en la tabla PACIENTE
+                $insertDoctor="INSERT INTO u_doctor(correo_doc) values('$correo')";
+
+                if($valor[0]==1){ //SI EL EMAIL YA ESTA REGISTRADO EN USUARIOS
+                    Header("Location: ../DoctorRegistro.php?error=Email no disponible");
+                }else if($valor[0]==0){//SI EL EMAIL NO ESTA en usuarios
+                //Insercion del usuario
+                    $insertUsuario="INSERT INTO usuarios(correo,pass,nombre,num_tel,sexo,edad,fecha_nac) values ('$correo','$pass','$nombre',$num_tel,'$sexo',$edad,'$fechaNacimiento')";
+                    $QinsertUsuario=mysqli_query($con,$insertUsuario);
+
+                    //EJECUCION DEL INSERT EN DOCTORES
+                    $QinsertDoctor=mysqli_query($con,$insertDoctor);
+
+                    if($QinsertDoctor=true){
+                        //Si todo fue bien en la insercion de paciente, se dirige a la siguiente pagina
+                        mysqli_free_result($QinsertDoctor);
+                        mysqli_free_result($QinsertUsuario);
+                        mysqli_free_result($qCorreo);
+                        mysqli_close($con);
+                        Header("Location: ../IUDoctor.php");
+                    }else{
+                        Header("Location: ../DoctorRegistro.php?error=Algo salio mal, lo sentimos");
+                    }
+
+                }
+            }else{
+                Header("Location: ../DoctorRegistro.php?error=Email invalido");
+            }
+        }else{ //Si no selecciono un sexo...
+            mysqli_close($con);
+            Header("Location: ../DoctorRegistro.php?error=Selecciona un sexo");
+        }
+    }     
+
+    
+    function busca_edad($fechaNacimiento){
+        $dia=date("d");
+        $mes=date("m");
+        $ano=date("Y");
+                
+        $dianaz=date("d",strtotime($fechaNacimiento));
+        $mesnaz=date("m",strtotime($fechaNacimiento));
+        $anonaz=date("Y",strtotime($fechaNacimiento));
+        
+        //si el mes es el mismo pero el día inferior aun no ha cumplido años, le quitaremos un año al actual
+        if (($mesnaz == $mes) && ($dianaz > $dia)) {
+        $ano=($ano-1); }
+        
+        //si el mes es superior al actual tampoco habrá cumplido años, por eso le quitamos un año al actual
+        if ($mesnaz > $mes) {
+        $ano=($ano-1);}
+        
+        //ya no habría mas condiciones, ahora simplemente restamos los años y mostramos el resultado como su edad
+        $edad=($ano-$anonaz);
+
+        return $edad;
     }
 ?>
