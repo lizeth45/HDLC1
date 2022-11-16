@@ -306,6 +306,7 @@ body.dark .sidebar header .toggle{
     background: var(--primary-color-light);
     border-radius: 10px;
     transition: var(--tran-05);
+    cursor: pointer;
 }
 
 .search-box input{
@@ -316,7 +317,8 @@ body.dark .sidebar header .toggle{
     border-radius: 6px;
     font-size: 16px;
     font-weight: 500;
-    background: var(--primary-color-light);
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
     transition: var(--tran-05);
 }
 
@@ -349,6 +351,10 @@ body.dark .sidebar li a:hover .text{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.menu-bar::-webkit-scrollbar{
+    display: none;
 }
 
 .menu-bar .mode{
@@ -654,6 +660,7 @@ body.dark .card .button button:hover {
 }
 .iupac.cita .citas{
     opacity: 1;
+    pointer-events: all;
     position: absolute;
     height: 100vh;
     left: 250px;
@@ -671,3 +678,151 @@ body.dark .iupac.cita .citas .text{
     color: #CCC;
 }
 
+.iupac.cita .citas .formulario{
+    display: flex;
+    height: 100vh;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.iupac.cita .citas .formulario .containerc{
+    max-width: 700px;
+    width: 100%;
+    background: #FFF;
+    padding: 25px 30px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark .iupac.cita .citas .formulario .containerc{
+    background: var(--sidebar-color);
+}
+
+.iupac.cita .citas .formulario .containerc .titulo{
+    font-size: 25px;
+    font-weight: 500;    
+    position: relative;
+}
+
+body.dark .iupac.cita .citas .formulario .containerc .titulo{
+    color: #CCC;
+}
+
+.iupac.cita .citas .formulario .containerc .titulo::before{
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 50px;
+    background: linear-gradient(135deg, #2fc4f1, #02556e);
+    left: 0;
+    bottom: 0;
+    margin-bottom: -8px;
+}
+
+body.dark .iupac.cita .citas .formulario .containerc .titulo::before{
+    background: linear-gradient(135deg, #666666, #CCC);
+}
+
+.iupac.cita .citas .formulario .containerc form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+body.dark .iupac.cita .citas .formulario .containerc form .user-details{
+    color: #CCC;
+}
+
+.iupac.cita .citas .formulario .containerc form .user-details .input-box{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.iupac.cita .citas .formulario .containerc form .user-details .input-box .details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.iupac.cita .citas .formulario .containerc form .user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #CCC;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    color: var(--text-color);
+}
+
+body.dark .iupac.cita .citas .formulario .containerc form .user-details .input-box input{
+    background: #454646;
+    border: 1px solid #454646;
+}
+
+.iupac.cita .citas .formulario .containerc form .user-details .input-box input:focus,
+.iupac.cita .citas .formulario .containerc form .user-details .input-box input:valid{
+    border-color: #02556e;
+}
+
+body.dark .iupac.cita .citas .formulario .containerc form .user-details .input-box input:focus,
+body.dark .iupac.cita .citas .formulario .containerc form .user-details .input-box input:valid{
+    border-color: #ffffff;
+}
+
+.iupac.cita .citas .formulario .containerc form .buttonc{
+    height: 45px;
+    margin: 45px 0;
+}
+
+.iupac.cita .citas .formulario .containerc form .buttonc input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #FFF;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #2fc4f1, #02556e);
+}
+
+body.dark .iupac.cita .citas .formulario .containerc form .buttonc input{
+    background: linear-gradient(135deg, #464646, #CCC);
+}
+
+.iupac.cita .citas .formulario .containerc form .buttonc input:hover{
+    background: linear-gradient(-135deg, #2fc4f1, #02556e);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{    
+    background: linear-gradient(-135deg, #464646, #CCC);
+    transition: var(--tran-05);
+}
+
+@media (max-width: 584px){
+    .iupac.cita .citas .formulario .containerc{
+        max-width: 100%;
+    }
+
+    .iupac.cita .citas .formulario .containerc form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .iupac.cita .citas .formulario .containerc form .user-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    .iupac.cita .citas .formulario .containerc form .user-details::-webkit-scrollbar{
+        width: 5px;
+    }
+}
