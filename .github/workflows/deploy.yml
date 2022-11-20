@@ -1,7 +1,7 @@
 name: Deploy to public zone
 on:
   push:
-    branches: [ "main", "feature/continous-integration-impl" ]
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
