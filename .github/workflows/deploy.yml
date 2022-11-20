@@ -1,0 +1,19 @@
+name: Deploy to public zone
+on:
+  push:
+    branches: [ master, feature/continous-integration-impl ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Upload local files to server via FTP
+        uses: airvzxf/ftp-deployment-action@1.2
+        with:
+          server: ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: ${{ secrets.FTP_PORT }}
+          local_dir: "./HDLC"
+          remote_dir: "./public_html"
+          delete: "false"
