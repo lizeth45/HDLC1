@@ -221,10 +221,15 @@
                     <div class="cancelar">
                       <button class="cancelarBtn">Cancelar</button>
                     </div>
+                    <div class="dates">
+                      <h3 class="text">Progrmada para el día:</h3>          
+                      <div class="fecha">14/09/2001</div>
+                      <div class="horario">13:00 Hrs</div>
+                    </div>
                   </div>
                 </section>
               </section>
-              
+
         </section>
 
         <script src="/src/JS/scriptIUP.js"></script>
