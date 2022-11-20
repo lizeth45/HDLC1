@@ -7,18 +7,18 @@ jobs:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Generate .env file
-      run: 'echo "$ENVIRONMENT_CONTENTS" > HDLC/.env'
-      shell: bash
-      env:
-        ENVIRONMENT_CONTENTS: ${{ secrets.ENVIRONMENT_CONTENTS }}
-    - name: Upload via ftp
-      uses: sebastianpopp/ftp-action@releases/v2
-      with:
-        host: ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}
-        user: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        localDir: "HDLC"
-        remoteDir: "public_html"
-        options: "--delete --asci"
+      - uses: actions/checkout@v2
+      - name: Generate .env file
+        run: 'echo "$ENVIRONMENT_CONTENTS" > HDLC/.env'
+        shell: bash
+        env:
+          ENVIRONMENT_CONTENTS: ${{ secrets.ENVIRONMENT_CONTENTS }}
+      - name: Upload via ftp
+        uses: sebastianpopp/ftp-action@releases/v2
+        with:
+          host: ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          localDir: "HDLC"
+          remoteDir: "public_html"
+          options: "--delete --asci"
