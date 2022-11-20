@@ -207,6 +207,24 @@
                 </section>
               </section>
 
+              <section class="agendar">
+                <h1 class="text">Calendario de citas</h1>
+                <section class="citaconteiner">
+                  <div class="citac">
+                    <div class="image">
+                      <img src="/Icons/sylvie.jpeg" alt="doc1">
+                    </div>
+                    <div class="citainfo">
+                      <div class="titulo">Chema Padilla</div>
+                      <div class="subtitulo">Sexólogo</div>
+                    </div>
+                    <div class="cancelar">
+                      <button class="cancelarBtn">Cancelar</button>
+                    </div>
+                  </div>
+                </section>
+              </section>
+              
         </section>
 
         <script src="/src/JS/scriptIUP.js"></script>

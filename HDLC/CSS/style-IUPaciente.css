@@ -20,6 +20,13 @@
     --tran-03: all 0.3s ease;
     --tran-04: all 0.4s ease;
     --tran-05: all 0.5s ease;
+
+    --color-texth1: #17334e;
+    --color-border-img: #06566e;
+    --border-img: #CCC;
+    --color-texth2: #3A3B3C;
+    --color-textBtn: #fff;
+    --btn-cancelar: rgb(212, 30, 30);
 }
 
 body{
@@ -35,6 +42,13 @@ body.dark{
     --primary-color-light: #3A3B3C;
     --toggle-color: #FFF;
     --text-color: #CCC;
+
+    --color-texth1: #CCC;
+    --color-border-img: #fcfcfc;
+    --border-img: #0686ad;
+    --color-texth2: #CCC;
+    --color-textBtn: #CCC;
+    --btn-cancelar: rgb(212, 30, 30);
 }
 
 /* === Popup Info Doctores === */
@@ -427,6 +441,12 @@ body.dark .switch::before{
 
 /* === Dashboard === */
 
+.iupac.menu .agendar,
+.iupac .agendar{
+    opacity: 0;
+    pointer-events: none;
+}
+
 .iupac.menu .citas,
 .iupac .citas{
     opacity: 0;
@@ -435,6 +455,8 @@ body.dark .switch::before{
 
 .iupac .home,
 .iupac.menu .home{
+    opacity: 1;
+    top: 1vh;
     position: absolute;
     height: 100vh;
     left: 250px;
@@ -465,6 +487,11 @@ body.dark .iupac.menu .home .text{
 }
 
 .sidebar.close ~ .iupac.cita .citas{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+.sidebar.close ~ .iupac.ctpr .agendar{
     left: 88px;
     width: calc(100% - 88px);
 }
@@ -658,8 +685,15 @@ body.dark .card .button button:hover {
     opacity: 0;
     pointer-events: none;
 }
+
+.iupac.cita .agendar{
+    opacity: 0;
+    pointer-events: none;
+}
+
 .iupac.cita .citas{
     opacity: 1;
+    top: 1vh;
     pointer-events: all;
     position: absolute;
     height: 100vh;
@@ -825,4 +859,106 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
     .iupac.cita .citas .formulario .containerc form .user-details::-webkit-scrollbar{
         width: 5px;
     }
+}
+
+ /* === Citas Registradas === */
+
+ .iupac.ctpr .home{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iupac.ctpr .citas{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iupac.ctpr .agendar{
+    opacity: 1;
+    top: 1vh;
+    pointer-events: all;
+    position: absolute;
+    height: 100vh;
+    left: 250px;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.iupac.ctpr .agendar .text{
+    color: var(--color-texth1);
+    padding: 10px 40px;
+}
+
+.iupac.ctpr .agendar .citaconteiner{
+    display: flex;
+    height: 100vh;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.iupac.ctpr .agendar .citaconteiner .citac{
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    background: var(--sidebar-color);
+    padding: 25px 30px;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+}
+
+.citac .citainfo{
+    padding-left: 3%;
+    padding-top: 2%;
+}
+
+.citac .image{
+
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    padding: 2px;
+    background: var(--color-border-img);
+}
+
+.citac .image img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border-img);
+}
+
+.iupac.ctpr .titulo{
+    color: var(--color-texth1);
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.iupac.ctpr .subtitulo{
+    color: var(--color-texth2);
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.iupac.ctpr .citac .cancelar{
+    margin: 30px 110px;
+}
+
+.iupac.ctpr .cancelar button{
+    border: none;
+    background: var(--primary-color);
+    height: 30px;
+    width: 100px;
+    border-radius: 6px;
+    color: var(--color-textBtn);
+    font-weight: 400;
+}
+
+.iupac.ctpr .cancelar button:hover{
+    background: var(--btn-cancelar);
+    cursor: pointer;
 }
