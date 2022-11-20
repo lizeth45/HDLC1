@@ -3,22 +3,22 @@ on:
   push:
     branches: [ "main" ]
 jobs:
-  build:
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Generate .env file
-        run: 'echo "$ENVIRONMENT_CONTENTS" > .env'
+        run: 'echo "$ENVIRONMENT_CONTENTS" > HDLC/.env'
         shell: bash
         env:
           ENVIRONMENT_CONTENTS: ${{ secrets.ENVIRONMENT_CONTENTS }}
-      - name: Upload local files to server via FTP
-        uses: airvzxf/ftp-deployment-action@latest
+      - name: Upload via ftp
+        uses: sebastianpopp/ftp-action@releases/v2
         with:
-          server: ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}
+          host: ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.FTP_PORT }}
-          local_dir: "./HDLC"
-          remote_dir: "./public_html"
-          delete: "true"
+          localDir: "HDLC"
+          remoteDir: "public_html"
+          options: "--delete --asci"
