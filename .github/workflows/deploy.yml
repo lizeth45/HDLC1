@@ -9,10 +9,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Generate .env file
-        run: 'echo "$ENVIRONMENT_CONTENTS" > HDLC/.env'
+        run: 'echo "$PHP_CONNECTION_FILE_CONTENTS" > HDLC/src/connection/Conexiondb.php'
         shell: bash
         env:
-          ENVIRONMENT_CONTENTS: ${{ secrets.ENVIRONMENT_CONTENTS }}
+          PHP_CONNECTION_FILE_CONTENTS: ${{ secrets.PHP_CONNECTION_FILE_CONTENTS }}
       - name: Upload via ftp
         uses: sebastianpopp/ftp-action@releases/v2
         with:
