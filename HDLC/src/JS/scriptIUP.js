@@ -31,39 +31,33 @@ const home = document.querySelector(".home"),
 const infoDocs = document.querySelector(".info-docs"),
       overlay = document.querySelector(".overlay"),
       cerrarBtn = document.querySelector(".cerrar-btn"),
-      aboutMeBtn = document.querySelector(".aboutMe");
+      aboutMeBtn = document.querySelectorAll('.aboutMe');
+      aboutMeBtn.forEach((btn) =>{
+        btn.addEventListener('click', () => {
+            infoDocs.classList.add("active");
+        });
 
-      aboutMeBtn.addEventListener("click", () => infoDocs.classList.add("active"));
+      });
+
       cerrarBtn.addEventListener("click", () => infoDocs.classList.remove("active"));
       overlay.addEventListener("click", () => infoDocs.classList.remove("active"));
 
 const imenu = document.querySelector(".Imenu"),
       icitas = document.querySelector(".Icitas"),
       icitasprox = document.querySelector(".Icitas-prox"),
-      iperfil = document.querySelector(".Iperfil");
-      citarBtn = document.querySelector(".hireMe")
+      iperfil = document.querySelector(".Iperfil"),
+      citarBtn = document.querySelectorAll('.hireMe');
+      citarBtn.forEach((btn) =>{
+        btn.addEventListener('click', () => {
+            navigateTo('cita');
+        });
+      });
 
-      imenu.addEventListener("click", () => container.classList.add("menu"));
-      imenu.addEventListener("click", () => container.classList.remove("cita"));
-      imenu.addEventListener("click", () => container.classList.remove("ctpr"));
-      imenu.addEventListener("click", () => container.classList.remove("perfil"));
+      imenu.addEventListener("click", () => navigateTo('menu'));
+      icitas.addEventListener("click", () => navigateTo('cita'));
+      icitasprox.addEventListener("click", () => navigateTo('ctpr'));
+      iperfil.addEventListener("click", () => navigateTo('perfil'));
 
-      citarBtn.addEventListener("click", () => container.classList.add("cita"));
-      citarBtn.addEventListener("click", () => container.classList.remove("menu"));
-      citarBtn.addEventListener("click", () => container.classList.remove("ctpr"));
-      citarBtn.addEventListener("click", () => container.classList.remove("perfil"));
-
-      icitas.addEventListener("click", () => container.classList.add("cita"));
-      icitas.addEventListener("click", () => container.classList.remove("menu"));
-      icitas.addEventListener("click", () => container.classList.remove("ctpr"));
-      icitas.addEventListener("click", () => container.classList.remove("perfil"));
-
-      icitasprox.addEventListener("click", () => container.classList.add("ctpr"));
-      icitasprox.addEventListener("click", () => container.classList.remove("menu"));
-      icitasprox.addEventListener("click", () => container.classList.remove("cita"));
-      icitasprox.addEventListener("click", () => container.classList.remove("perfil"));
-
-      iperfil.addEventListener("click", () => container.classList.add("perfil"));
-      iperfil.addEventListener("click", () => container.classList.remove("menu"));
-      iperfil.addEventListener("click", () => container.classList.remove("cita"));
-      iperfil.addEventListener("click", () => container.classList.remove("ctpr"));
+      function navigateTo(route){
+        container.className='iupac ' + route
+      }
