@@ -1,4 +1,5 @@
-<?php 
+<?php
+    include("../lib/include.php");
     function conexion(){
         $host = $_ENV["HDLC1_DATABASE_HOST"];
         $user = $_ENV["HDLC1_DATABASE_USER"];
