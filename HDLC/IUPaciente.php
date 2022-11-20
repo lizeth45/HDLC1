@@ -11,9 +11,9 @@
         <title>HDLC Pacientes</title>
 
         <!--=== CSS ===-->
-        <link rel="stylesheet" href="./CSS/style-IUPaciente.css">
-        <link rel="shortcut icon" href="./Icons/iconpg.png" type="image/x-icon">
-        <link rel="stylesheet" href="./CSS/normalize.css">
+        <link rel="stylesheet" href="/CSS/style-IUPaciente.css">
+        <link rel="shortcut icon" href="/Icons/iconpg.png" type="image/x-icon">
+        <link rel="stylesheet" href="/CSS/normalize.css">
 
         <!-- ===== Link Swiper's CSS ===== -->
         <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
@@ -39,7 +39,7 @@
                     </div>
               </div>
               <div class="imagepop">
-                    <img src="./Icons/userDoctor.png" alt="docpop1">
+                    <img src="/Icons/userDoctor.png" alt="docpop1">
               </div>
           </div>
         </section>
@@ -47,7 +47,7 @@
             <header>
                 <div class="image-text">
                     <span class="image">
-                        <img src="./Icons/HDLC.png" alt="logo">
+                        <img src="/Icons/HDLC.png" alt="logo">
                     </span>
 
                     <div class="text header-text">
@@ -134,7 +134,7 @@
                                   <div class="swiper-slide card">
                                     <div class="card-content">
                                       <div class="image"> <!--Aqui faltaria la URLdelaImagen-->
-                                        <img src="./Icons/userDoctor.png" alt="doc1">
+                                        <img src="/Icons/userDoctor.png" alt="doc1">
                                       </div>
                           
                                       <div class="name-profession">
@@ -209,7 +209,7 @@
 
         </section>
 
-        <script src="./src/JS/scriptIUP.js"></script>
+        <script src="/src/JS/scriptIUP.js"></script>
 
         <!-- Swiper JS -->
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
