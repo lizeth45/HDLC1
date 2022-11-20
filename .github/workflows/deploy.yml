@@ -21,4 +21,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           localDir: "HDLC"
           remoteDir: "public_html"
-          options: "--delete --asci"
+          options: "--delete"
