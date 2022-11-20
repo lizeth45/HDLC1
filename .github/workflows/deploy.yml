@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Upload local files to server via FTP
-        uses: airvzxf/ftp-deployment-action@1.2
+        uses: airvzxf/ftp-deployment-action@latest
         with:
           server: ${{ secrets.FTP_SERVER }}:${{ secrets.FTP_PORT }}
           user: ${{ secrets.FTP_USERNAME }}
