@@ -16,4 +16,4 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local_dir: "./HDLC"
           remote_dir: "./public_html"
-          delete: "false"
+          delete: "true"
