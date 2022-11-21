@@ -48,19 +48,26 @@
           <article class="about_icons">
             <img src="/assets/icons/usuarios.png" alt="" class="about_icon">
             <h3 class="about_title">Usuarios</h3>
-            <p class="about_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto et incidunt aliquid quos.</p>
+            <p class="about_paragraph">Un sistema donde se controlen los datos de cada usuario de manera segura y privada. Asu vez que se otorgue la libertad de que cada uno pueda modificar información personal de manera intuitiva.</p>
           </article>
 
           <article class="about_icons">
             <img src="/assets/icons/Doctores.png" alt="" class="about_icon">
             <h3 class="about_title">Doctores</h3>
-            <p class="about_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto et incidunt aliquid quos.</p>
+            <p class="about_paragraph">
+                - Personal entrenado y capacitado.<br>
+                - Cuidado de calidad.<br>
+                - Equipamiento moderno y seguro.<br>
+                - Uso de medicamentos apropiados.<br>
+                - Uso de nuevas tecnología.
+            </p>
           </article>
 
           <article class="about_icons">
             <img src="/assets/icons/pacientes.png" alt="" class="about_icon">
             <h3 class="about_title">Pacientes</h3>
-            <p class="about_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto et incidunt aliquid quos.</p>
+            <p class="about_paragraph">En en Hospital De La Cruz, se busca que los pacientes puedan confiar en que se les brindará ayuda en casos de emergencia y cuidados médicos, independientemente de la situación.
+            </p>
           </article>
         </div>
       </section>
