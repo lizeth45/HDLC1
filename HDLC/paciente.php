@@ -190,27 +190,67 @@
             </section>
 
             <section class="agendar">
-              <h1 class="text">Calendario de citas</h1>
-              <section class="citaconteiner">
-                <div class="citac">
-                  <div class="image">
-                    <img src="/assets/icons/sylvie.jpeg" alt="doc1">
+                <h1 class="text">Calendario de citas</h1>
+                <section class="citaconteiner">
+                  <div class="citac">
+                    <div class="image">
+                      <img src="/Icons/sylvie.jpeg" alt="doc1">
+                    </div>
+                    <div class="citainfo">
+                      <div class="titulo">Chema Padilla</div>
+                      <div class="subtitulo">Sexólogo</div>
+                      <div class="dates">
+                        <h3 class="text">Programada para el día:</h3>
+                        <section class="ctfc">
+                          <h5 class="fecha">14/09/2001</h5>
+                          <h5 class="horario">13:00 Hrs</h5>
+                        </section>          
+                      </div>
+                    </div>
+                    <div class="cancelar">
+                      <button class="cancelarBtn">Cancelar</button>
+                    </div>
                   </div>
-                  <div class="citainfo">
-                    <div class="titulo">Chema Padilla</div>
-                    <div class="subtitulo">Sexólogo</div>
+                  <div class="citac">
+                    <div class="image">
+                      <img src="/Icons/sylvie.jpeg" alt="doc1">
+                    </div>
+                    <div class="citainfo">
+                      <div class="titulo">Chema Padilla</div>
+                      <div class="subtitulo">Sexólogo</div>
+                      <div class="dates">
+                        <h3 class="text">Programada para el día:</h3>
+                        <section class="ctfc">
+                          <h5 class="fecha">14/09/2001</h5>
+                          <h5 class="horario">13:00 Hrs</h5>
+                        </section>          
+                      </div>
+                    </div>
+                    <div class="cancelar">
+                      <button class="cancelarBtn">Cancelar</button>
+                    </div>
                   </div>
-                  <div class="cancelar">
-                    <button class="cancelarBtn">Cancelar</button>
+                  <div class="citac">
+                    <div class="image">
+                      <img src="/Icons/sylvie.jpeg" alt="doc1">
+                    </div>
+                    <div class="citainfo">
+                      <div class="titulo">Chema Padilla</div>
+                      <div class="subtitulo">Sexólogo</div>
+                      <div class="dates">
+                        <h3 class="text">Programada para el día:</h3>
+                        <section class="ctfc">
+                          <h5 class="fecha">14/09/2001</h5>
+                          <h5 class="horario">13:00 Hrs</h5>
+                        </section>          
+                      </div>
+                    </div>
+                    <div class="cancelar">
+                      <button class="cancelarBtn">Cancelar</button>
+                    </div>
                   </div>
-                  <div class="dates">
-                    <h3 class="text">Progrmada para el día:</h3>          
-                    <div class="fecha">14/09/2001</div>
-                    <div class="horario">13:00 Hrs</div>
-                  </div>
-                </div>
+                </section>
               </section>
-            </section>
 
       </section>
 
