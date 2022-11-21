@@ -565,6 +565,10 @@ body.dark .hero_title{
     position: relative;
     z-index: 100;
   }
+
+    .swiper-slide.card {
+        border-radius: 20px !important;
+    }
   
   section .card .image{
     height: 140px;
@@ -888,6 +892,7 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
 .iupac.ctpr .agendar .text{
     color: var(--color-texth1);
     padding: 10px 40px;
+    font-size: 1.3rem;
 }
 
 .iupac.ctpr .agendar .citaconteiner{
