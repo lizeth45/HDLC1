@@ -1,5 +1,9 @@
 <?php
     session_start();
+    include("src/apis/_mailExists.php");
+    include("src/apis/databaseConnection.php"); // DB
+    include("src/apis/registerPatient.php");
+    include("src/apis/registerDoctor.php");
     include("src/apis/login.php");
     include("src/apis/updateDoctorData.php");
     include("src/apis/updatePatientData.php");
@@ -13,6 +17,20 @@
         }
         return !$missing;
     }
+
+    // POST REGISTER PATIENT
+    if(
+        postValuesExist('api', 'correo', 'pass', 'nombre', 'num_tel', 'SEXO', 'fechaN')
+        &&
+        $_POST['api'] == 'registerPatient'
+    ) postPatientRegister();
+
+    // POST REGISTER DOCTOR
+    if(
+        postValuesExist('api', 'correo', 'pass', 'nombre', 'num_tel', 'SEXO', 'fechaN', 'cedula', 'ESPECIALIDAD')
+        &&
+        $_POST['api'] == 'registerDoctor'
+    ) postDoctorRegister();
 
     // POST LOGIN FORM
     if(
@@ -41,7 +59,5 @@
         &&
         $_POST['api'] == 'generateAppointment'
     ) postPatientGenerateAppointment();
-
-    Header("Location: /?noExec=1");
 
 ?>

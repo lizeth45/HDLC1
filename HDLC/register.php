@@ -17,7 +17,7 @@
             <!--En la siguiente col estará el form-->
             <div class="col bg-white p-5 rounded"> 
                 <div class="text-end">
-                    <img src="/icons/HDLC.png" width="48" alt="">
+                    <img src="/assets/icons/HDLC.png" width="48" alt="">
                 </div>
                 <h2 class="fw-bold text-center">¿Cómo deseas registrarte?</h2>
                 <!--FORMULARIO-->
@@ -134,11 +134,11 @@
             <!--En la siguiente col estará el form-->
             <div class="col bg-white p-5 rounded"> 
                 <div class="text-end">
-                    <img src="/icons/HDLC.png" width="48" alt="">
+                    <img src="/assets/icons/HDLC.png" width="48" alt="">
                 </div>
                 <h2 class="fw-bold text-center">REGISTRO PACIENTE</h2>
                 <!--FORMULARIO-->
-                <form class="row" method="POST" action="connection/InsertUser.php">
+                <form class="row" method="POST" action="auth.php">
                     <?php
                         if(isset($_GET['error'])){?>
                             <p class="error"><?php echo $_GET['error']; ?></p>
@@ -180,7 +180,7 @@
                         <label for="inputFN" class="form-label">Fecha de nacimiento</label>
                         <input type="date" class="form-control" id="inputFN" name="fechaN" required>
                     </div>
-                    
+                    <input type="hidden" name="api" value="registerPatient" />
                     <div class="col-4 py-3">
                         <input type="submit" class="btn btn-primary" name='save_up' value="GUARDAR">
                     </div>

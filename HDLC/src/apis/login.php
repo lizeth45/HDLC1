@@ -1,5 +1,4 @@
 <?php
-    include("databaseConnection.php");
     include("sanitize.php");
 
     function postLoginForm() {
