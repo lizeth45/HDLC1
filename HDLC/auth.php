@@ -1,11 +1,18 @@
 <?php
     include("src/apis/login.php");
 
-    if(!isset($_POST["api"])) {
-        Header("Location: /");
+    function postValuesExist() {
+        $values = func_get_args();
+        $missing = false;
+        foreach($values as $key) {
+            $missing = !isset($_POST[$key]);
+        }
+        return !$missing;
     }
 
     // POST
-    if($_POST["api"] === "login") postLoginForm();
+    if(postValuesExist('email', 'password')) postLoginForm();
+
+    echo "No execution found";
 
 ?>

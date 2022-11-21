@@ -1,26 +1,28 @@
 <?php
   include("src/common/include.php");
-  include("src/connection/Conexiondb.php");
-  $con = conexion();
+  include("src/apis/databaseConnection.php");
+  $con = connect();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <?= Head("Paciente") ?>
+  <?= Head("Pacientes", [
+    "assets/css/style-IUPaciente.css"
+  ]) ?>
   <body>
       <section class="info-docs">
         <span class="overlay"></span>
         <div class="popup">
             <div class="popup-info">
                   <i class='bx bx-info-circle'></i>
-                  <h2>Chema Padilla</h2>
-                  <h3>Sexólogo</h3>
-                  <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempora? Delectus voluptate eum reprehenderit sapiente fugiat ratione optio molestiae alias, suscipit sint repudiandae consequuntur doloribus, perferendis fugit ullam saepe molestias.</h4>
+                  <h2 class="doctor-name">Chema Padilla</h2>
+                  <h3 class="doctor-spec">Sexólogo</h3>
+                  <h4 class="long-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempora? Delectus voluptate eum reprehenderit sapiente fugiat ratione optio molestiae alias, suscipit sint repudiandae consequuntur doloribus, perferendis fugit ullam saepe molestias.</h4>
                   <div class="buttons">
                     <button class="cerrar-btn">Cerrar</button>
                   </div>
             </div>
             <div class="imagepop">
-                  <img src="/assets/icons/userDoctor.png" alt="docpop1">
+                  <img src="/assets/icons/userDoctor.png" alt="docpop1" class="doctor-image">
             </div>
         </div>
       </section>
@@ -48,25 +50,25 @@
                   </li>
                   <ul class="menu-links">
                           <li class="Imenu">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                   <i class='bx bx-home-alt-2 icon' ></i>
                                   <span class="text nav-text">Menú</span>
                               </a>
                           </li>
                           <li class="Icitas">
-                            <a href="#">
+                            <a href="javascript:void(0);">
                                   <i class='bx bx-bell icon'></i>
                                   <span class="text nav-text">Agendar citas</span>
                             </a>
                           </li>
                           <li class="Icitas-prox">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                   <i class='bx bx-calendar icon' ></i>
                                   <span class="text nav-text">Citas próximas</span>
                               </a>
                           </li>
                           <li class="Iperfil">
-                              <a href="#">
+                              <a href="javascript:void(0);">
                                   <i class='bx bx-cog icon' ></i>
                                   <span class="text nav-text">Editar perfil</span>
                               </a>
@@ -76,7 +78,7 @@
 
               <div class="bottom-content">
                   <li class="">
-                      <a href="#">
+                      <a href="javascript:void(0);">
                           <i class='bx bx-log-out icon' ></i>
                           <span class="text nav-text">Cerrar sesión</span>
                       </a>
@@ -124,7 +126,7 @@
                                     </div>
                         
                                     <div class="button">
-                                      <button class="aboutMe" data-id="<?php echo $idDoc ?>">Acerca de mi</button>
+                                      <button class="aboutMe" data-id="<?php echo $idDoc ?>" onclick="RequestDoctorDetail(this)">Acerca de mi</button>
                                       <button class="hireMe">Citar</button>
                                     </div>
                                   </div>

@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Generate .env file
-        run: 'echo "$PHP_CONNECTION_FILE_CONTENTS" > HDLC/src/connection/Conexiondb.php'
+      - name: Generate connectDatabase.php file
+        run: 'echo "$PHP_CONNECTION_FILE_CONTENTS" > HDLC/src/apis/databaseConnection.php'
         shell: bash
         env:
           PHP_CONNECTION_FILE_CONTENTS: ${{ secrets.PHP_CONNECTION_FILE_CONTENTS }}
