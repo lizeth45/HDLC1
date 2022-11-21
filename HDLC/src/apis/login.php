@@ -18,7 +18,8 @@
         if($result[0]) {
             // Found user
             $_SESSION['isLoggedIn'] = true;
-            $_SESSION['userId'] = '-1';
+            $_SESSION['userId'] = '-1'; // TODO: Save userid from result
+            $_SESSION['userType'] = 'doctor'; // TODO: Save user type based on database query
             Header("Location: /paciente.php");
         } else {
             // Failed login
