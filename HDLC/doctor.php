@@ -1,4 +1,8 @@
 <?php
+  session_start();
+  if(!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
+    Header("Location: /");
+  }
   include("src/common/include.php");
   include("src/apis/databaseConnection.php");
   $con = connect();
