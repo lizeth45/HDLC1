@@ -92,3 +92,16 @@ function removeActive(buttonCerrar) {
   const infoDocs = document.querySelector(".info-docs")
   infoDocs.classList.remove("active");
 }
+
+function toggleRegisterForm(selectBox) {
+  const doctorForm = document.querySelector(".doctor-form-container");
+  const patientForm = document.querySelector(".patient-form-container");
+
+  if(selectBox.value === "DOCTOR") {
+    doctorForm.classList.remove('hide');
+    patientForm.classList.add('hide');
+  } else {
+    doctorForm.classList.add('hide');
+    patientForm.classList.remove('hide');
+  }
+}
