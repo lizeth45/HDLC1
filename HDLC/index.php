@@ -3,7 +3,9 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <?= Head("Hospital de la Cruz") ?>
+  <?= Head("Hospital de la Cruz", [
+    "/assets/css/style-index.css"
+  ]) ?>
   <body>
     <header class="hero">
         <nav class="nav container"> 
@@ -24,7 +26,7 @@
                     <a href="#Acerca_de" class="nav_links">Acerca de</a>
                 </li>
                 <li class="nav_items">
-                    <a href="/login.php" class="nav_links">Iniciar Sesión</a>
+                    <a href="login.php" class="nav_links">Iniciar Sesión</a>
                 </li>
             </ul>
         </nav>
