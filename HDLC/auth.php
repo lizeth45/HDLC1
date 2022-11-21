@@ -9,6 +9,8 @@
     include("src/apis/updatePatientData.php");
     include("src/apis/generatePatientAppointment.php");
 
+    // TODO: !!!CRITICAL!!! IMPLEMENT INPUT SANITIZATION
+
     function postValuesExist() {
         $values = func_get_args();
         $missing = false;
