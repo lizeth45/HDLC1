@@ -4,11 +4,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const body = document.querySelector("body"),
-  sidebar = body.querySelector(".sidebar"),
-  toggle = body.querySelector(".toggle"),
-  searchBtn = body.querySelector(".search-box"),
-  modeSwtich = body.querySelector(".toggle-switch"),
-  modeText = body.querySelector(".mode-text");
+      sidebar = body.querySelector(".sidebar"),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwtich = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
 
 toggle.addEventListener("click", () => {
   sidebar.classList.toggle("close");
@@ -43,27 +43,32 @@ aboutMeBtn.forEach((btn) => {
   btn.addEventListener('click', () => {
     infoDocs.classList.add("active");
   });
-
 });
+if(cerrarBtn){
+  cerrarBtn.addEventListener("click", () => infoDocs.classList.remove("active"));
+}
 
-cerrarBtn.addEventListener("click", () => infoDocs.classList.remove("active"));
-overlay.addEventListener("click", () => infoDocs.classList.remove("active"));
+if(overlay){
+  overlay.addEventListener("click", () => infoDocs.classList.remove("active"));
+}
 
 const imenu = document.querySelector(".Imenu"),
-  icitas = document.querySelector(".Icitas"),
-  icitasprox = document.querySelector(".Icitas-prox"),
-  iperfil = document.querySelector(".Iperfil"),
-  citarBtn = document.querySelectorAll('.hireMe');
-citarBtn.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    navigateTo('cita');
+      icitas = document.querySelector(".Icitas"),
+      icitasprox = document.querySelector(".Icitas-prox"),
+      iperfil = document.querySelector(".Iperfil"),
+      citarBtn = document.querySelectorAll('.hireMe');
+if(citarBtn){
+  citarBtn.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      navigateTo('cita');
+    });
   });
-});
+}
 
-imenu.addEventListener("click", () => navigateTo('menu'));
-icitas.addEventListener("click", () => navigateTo('cita'));
-icitasprox.addEventListener("click", () => navigateTo('ctpr'));
-iperfil.addEventListener("click", () => navigateTo('perfil'));
+if(imenu) imenu.addEventListener("click", () => navigateTo('menu'));
+if(icitas) icitas.addEventListener("click", () => navigateTo('cita'));
+if(icitasprox) icitasprox.addEventListener("click", () => navigateTo('ctpr'));
+if(iperfil) iperfil.addEventListener("click", () => navigateTo('perfil'));
 
 function navigateTo(route) {
   container.className = 'iupac ' + route

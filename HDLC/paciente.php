@@ -273,15 +273,11 @@
                             <input type="password" placeholder="Contraseña actual" required>
                           </div>
                           <div class="input-box">
-                            <span class="details">Fecha de nacimiento:</span>
-                            <input type="date" placeholder="Fecha registrada" required>
-                          </div>
-                          <div class="input-box">
                             <span class="details">Nombre:</span>
                             <input type="text" placeholder="Nombre actual" required>
                           </div>
                           <div class="input-box">
-                            <span class="details">Número de tel:</span>
+                            <span class="details">Número de teléfono:</span>
                             <input type="text" placeholder="Número actual" required>
                           </div>
                         </div>
