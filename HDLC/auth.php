@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("src/apis/login.php");
 
     function postValuesExist() {

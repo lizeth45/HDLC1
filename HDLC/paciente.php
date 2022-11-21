@@ -1,4 +1,8 @@
 <?php
+  session_start();
+  if(!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
+    Header("Location: /");
+  }
   include("src/common/include.php");
   include("src/apis/databaseConnection.php");
   $con = connect();
@@ -78,7 +82,7 @@
 
               <div class="bottom-content">
                   <li class="">
-                      <a href="javascript:void(0);">
+                      <a href="logout.php">
                           <i class='bx bx-log-out icon' ></i>
                           <span class="text nav-text">Cerrar sesión</span>
                       </a>

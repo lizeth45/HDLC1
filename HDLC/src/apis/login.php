@@ -17,6 +17,8 @@
         // Principal login logic
         if($result[0]) {
             // Found user
+            $_SESSION['isLoggedIn'] = true;
+            $_SESSION['userId'] = '-1';
             Header("Location: /paciente.php");
         } else {
             // Failed login
