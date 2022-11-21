@@ -69,7 +69,11 @@
         <div class="knowledge_container container">
           <div class="knowledge_texts">
             <h2 class="subtitle">Acerca de nosotros...</h2>
-            <p class="knowledge_paragraph">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse voluptates sequi at harum enim nostrum beatae sint, perspiciatis nam tenetur fugit amet dignissimos, minima sapiente officia adipisci quasi quibusdam laudantium.</p>
+            <p class="knowledge_paragraph">Misión <br>
+              En el Hospital de la Cruz, somos una Gran Familia dedicada a promover y recuperar la salud de nuestros pacientes, brindando una atención con eficacia, eficiencia y amabilidad, desarrollando nuestras actividades con altos niveles de seguridad, calidad y excelencia.<br><br>
+              Visión<br>
+              Consolidarnos como un hospital certificado por el Consejo de Salubridad General, de excelente prestigio cuyo modelo de atención al paciente, de organización y gestión se distinga por su ética, calidad, calidez y seguridad en el servicio, comprometidos siempre por el desarrollo tecnológico, profesional y humano de la organización.
+          </p>
           </div>
 
           <figure class="knowledge_picture">
