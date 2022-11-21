@@ -861,9 +861,9 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
     }
 }
 
- /* === Citas Registradas === */
+  /* === Citas Registradas === */
 
- .iupac.ctpr .home{
+.iupac.ctpr .home{
     opacity: 0;
     pointer-events: none;
 }
@@ -892,15 +892,17 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
 
 .iupac.ctpr .agendar .citaconteiner{
     display: flex;
-    height: 100vh;
     padding: 10px;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 .iupac.ctpr .agendar .citaconteiner .citac{
     position: relative;
-    max-width: 700px;
+    margin-bottom: 3rem;
+    max-width: 800px;
     width: 100%;
     background: var(--sidebar-color);
     padding: 25px 30px;
@@ -946,13 +948,18 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
 
 .iupac.ctpr .citac .cancelar{
     margin: 30px 110px;
+    right: 0;
+    max-height: 80px;
+    height: 100%;
+    max-width: 60px;
+    width: 100%;
 }
 
 .iupac.ctpr .cancelar button{
+    padding: 10px 15px;
+    margin: 30px 10px;
     border: none;
     background: var(--primary-color);
-    height: 30px;
-    width: 100px;
     border-radius: 6px;
     color: var(--color-textBtn);
     font-weight: 400;
@@ -961,6 +968,29 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
 .iupac.ctpr .cancelar button:hover{
     background: var(--btn-cancelar);
     cursor: pointer;
+}
+
+.iupac.ctpr .dates{
+    margin-top: 20px;
+}
+
+.iupac.ctpr .ctfc{
+    display: flex;
+    flex-direction: row;
+}
+
+.iupac.ctpr .ctfc h5{
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.iupac.ctpr .horario{
+    margin-left: 40px;
+}
+
+.iupac.ctpr .fecha{
+    margin-left: 60px;
 }
 
 .menu-links {
