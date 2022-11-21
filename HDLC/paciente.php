@@ -1,7 +1,7 @@
 <?php
   include("src/common/include.php");
   include("src/connection/Conexiondb.php");
-  $con=conexion();
+  $con = conexion();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,0 +1,8 @@
+body{
+    background: #ffe259;
+    background: linear-gradient(to right, #F7F9F9, #AED6F1 );
+}
+.bg{
+    background-image: url(/assets/icons/logIn.jpg);
+    background-position: center center;
+}

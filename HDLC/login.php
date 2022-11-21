@@ -1,6 +1,13 @@
+<?php
+    include("src/common/include.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
-    <?php include("src/common/Head.php"); ?>
+    <?= Head("Login", [
+        "/assets/css/error.css",
+        "/assets/css/login.css",
+        "/assets/css/style-index.css"
+    ]) ?>
     <body>
         <div class="container w-75 bg-primary mt-5 rounded shadow">
             <div class="row align-items-stretch">
@@ -13,7 +20,7 @@
                     </div>
                     <h2 class="fw-bold text-center py-5">INICIA SESION</h2>
                     <!--LOGIN-->
-                    <form method="POST" action="connection/SearchUser.php"> 
+                    <form method="POST" action="auth.php"> 
                         <?php
                             if(isset($_GET['error'])){?>
                                 <p class="error"><?php echo $_GET['error']; ?></p>
@@ -22,7 +29,7 @@
                         ?>
                         <div class="mb-4">
                             <label for="email" class="form-label">Correo electrónico</label>
-                            <input type="email" class="form-control" name="email" placeholder="ej: user@gmail.com" required>
+                            <input autocomplete="off" type="email" class="form-control" name="email" placeholder="ej: user@gmail.com" required>
                         </div> 
                         <div class="mb-4">
                             <label for="password" class="form-label">Contraseña</label>
@@ -34,6 +41,7 @@
                         <div class="my-3">
                             <span>¿No tienes cuenta? <a href="SelecTU.php">Regístrate</a></span> 
                         </div>
+                        <input type="hidden" name="api" value="login" />
                     </form>
                 </div>
             </div>
