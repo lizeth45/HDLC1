@@ -1,0 +1,10 @@
+body{
+    background: #ffe259;
+    background: linear-gradient(to right, #F7F9F9, #AED6F1 );
+}
+.bg{
+    background-position: center center;
+}
+.hide {
+    display: none;
+}
