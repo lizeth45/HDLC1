@@ -1,6 +1,6 @@
 <?php
-    include("src/connection/Conexiondb.php");
-    $con=conexion();
+    include("src/apis/databaseConnection.php");
+    $con = connect();
     
     if(isset($_GET['value'])){
         $idDOC=$_GET['value'];
@@ -9,26 +9,17 @@
         $row=mysqli_fetch_array($query);
         $nombre=$row['nombre'];
         $descrip=$row['descripcion'];
+        $textoChingueaSuMadre = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempora? Delectus voluptate eum reprehenderit sapiente fugiat ratione optio molestiae alias, suscipit sint repudiandae consequuntur doloribus, perferendis fugit ullam saepe molestias.";
+        $foto = "https://via.placeholder.com/200x350";
 
-        //aqui ira lo del pop up
-        echo  "<section class=\"info-docs active\" id=\"infodocs\">
-                    <span class=\"overlay\"></span>
-                    <div class=\"popup\">
-                        <div class=\"popup-info\" id=\"popup\">
-                            <i class='bx bx-info-circle'></i>
-                            <h2>".$nombre."</h2>
-                            <h3>".$descrip."</h3>
-                            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, tempora? Delectus voluptate eum reprehenderit sapiente fugiat ratione optio molestiae alias, suscipit sint repudiandae consequuntur doloribus, perferendis fugit ullam saepe molestias.</h4>
-                            <div class=\"buttons\">
-                                <button class=\"cerrar-btn\" onclick=\"removeActive(this)\">Cerrar</button>
-                            </div>
-                        </div>
-                        <div class=\"imagepop\">
-                            <img src=\"./Icons/userDoctor.png\" alt=\"docpop1\">
-                        </div>
-                    </div>
-                </section>
-                ";
+        echo "
+            {
+              \"nombre\": \"$nombre\",
+              \"descripcion\": \"$descrip\",
+              \"textoChingueAsuMadre\": \"$textoChingueaSuMadre\",
+              \"foto\": \"$foto\"
+            }
+        ";
 
     }
 

@@ -20,7 +20,7 @@
                     </div>
                     <h2 class="fw-bold text-center py-5">INICIA SESION</h2>
                     <!--LOGIN-->
-                    <form method="POST" action="auth.php"> 
+                    <form method="POST" action="auth.php">
                         <?php
                             if(isset($_GET['error'])){?>
                                 <p class="error"><?php echo $_GET['error']; ?></p>
