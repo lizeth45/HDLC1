@@ -3,7 +3,6 @@
   include("src/apis/databaseConnection.php");
   $con = connect();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <?= Head("Doctores", [
@@ -126,27 +125,27 @@
               <div class="containerep">
                 <div class="titulo">Modifica los campos que quieras actualizar</div>
                 <div class="forms">
-                  <form action="#">
+                  <form action="auth.php" method="POST">
                     <div class="user-details">
                       <div class="input-box">
                         <span class="details">Nombre:</span>
-                        <input type="text" placeholder="Nombre actual" required>
+                        <input name="nombre" type="text" placeholder="Nombre actual" required>
                       </div>
                       <div class="input-box">
                         <span class="details">Contraseña:</span>
-                        <input type="password" placeholder="Contraseña actual" required>
+                        <input name="password" type="password" placeholder="Contraseña actual" required>
                       </div>
                       <div class="input-box">
                         <span class="details">Número de teléfono:</span>
-                        <input type="text" placeholder="Número actual" required>
+                        <input name="phone" type="text" placeholder="Número actual" required>
                       </div>
                       <div class="input-box">
                         <span class="details">Descripción:</span>
-                        <textarea required></textarea>
+                        <textarea name="longdesc" required></textarea>
                       </div>
                       <div class="input-box">
                         <span class="details">Foto:</span>
-                        <input type="file" disabled>
+                        <input name="foto" type="file" disabled>
                       </div>
                     </div>
                     <div class="buttonep">

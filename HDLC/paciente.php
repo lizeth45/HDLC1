@@ -152,19 +152,19 @@
                 <div class="containerc">
                   <div class="titulo">Agenda una cita</div>
                   <div class="forms">
-                    <form action="#">
+                    <form action="auth.php" method="POST">
                       <div class="user-details">
                         <div class="input-box">
-                          <span class="details">Correo:</span>
-                          <input type="text" placeholder="Ingresa tu correo..." required>
+                          <span class="details">Nombre:</span>
+                          <input name="name" type="text" placeholder="Ingresa tu nombre..." required>
                         </div>
                         <div class="input-box">
                           <span class="details">Asunto:</span>
-                          <input type="text" placeholder="Describe el motivo..." required>
+                          <input name="motive" type="text" placeholder="Describe el motivo..." required>
                         </div>
                         <div class="input-box">
                           <span class="details">Fecha:</span>
-                          <input type="date" placeholder="Ingresa el dia de tu consulta..." required>
+                          <input name="date" type="date" placeholder="Ingresa el dia de tu consulta..." required>
                         </div>
                         <div class="input-box">
                           <span class="details">Hora:</span>
@@ -181,9 +181,10 @@
                         </div>
                         <div class="input-box">
                           <span class="details">Doctor:</span>
-                          <input type="text" placeholder="Selecciona al doctor..." required>
+                          <input name="doctor" type="text" placeholder="Selecciona al doctor..." required>
                         </div>
                       </div>
+                      <input type="hidden" name="api" value="generateAppointment" />
                       <div class="buttonc">
                         <input type="submit" value="Agendar">
                       </div>
@@ -262,25 +263,22 @@
                   <div class="containerep">
                     <div class="titulo">Modifica los campos que quieras actualizar</div>
                     <div class="forms">
-                      <form action="#">
+                      <form action="auth.php" method="POST">
                         <div class="user-details">
                           <div class="input-box">
-                            <span class="details">Correo:</span>
-                            <input type="text" placeholder="Correo actual" required>
+                            <span class="details">Nombre:</span>
+                            <input name="name" type="text" placeholder="Nombre" required>
                           </div>
                           <div class="input-box">
                             <span class="details">Contraseña:</span>
-                            <input type="password" placeholder="Contraseña actual" required>
-                          </div>
-                          <div class="input-box">
-                            <span class="details">Nombre:</span>
-                            <input type="text" placeholder="Nombre actual" required>
+                            <input name="password" type="password" placeholder="Contraseña" required>
                           </div>
                           <div class="input-box">
                             <span class="details">Número de teléfono:</span>
-                            <input type="text" placeholder="Número actual" required>
+                            <input name="phone" type="text" placeholder="Número" required>
                           </div>
                         </div>
+                        <input type="hidden" name="api" value="updatePatient" />
                         <div class="buttonep">
                           <input type="submit" value="Actualizar">
                         </div>
