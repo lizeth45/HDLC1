@@ -27,6 +27,8 @@
     --color-texth2: #3A3B3C;
     --color-textBtn: #fff;
     --btn-cancelar: rgb(212, 30, 30);
+    --color-encb: #17334e;
+    --forms-border:#CCC;
 }
 
 body{
@@ -49,7 +51,10 @@ body.dark{
     --color-texth2: #CCC;
     --color-textBtn: #CCC;
     --btn-cancelar: rgb(212, 30, 30);
+    --color-encb: #CCC;
+    --forms-border: #454646;
 }
+
 
 /* === Popup Info Doctores === */
 
@@ -492,6 +497,11 @@ body.dark .iupac.menu .home .text{
 }
 
 .sidebar.close ~ .iupac.ctpr .agendar{
+    left: 88px;
+    width: calc(100% - 88px);
+}
+
+.sidebar.close ~ .iupac.perfil .editprf{
     left: 88px;
     width: calc(100% - 88px);
 }
@@ -1000,4 +1010,168 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
 
 .menu-links {
     padding-left: 0;
+}
+
+/* === Edit Profile === */
+
+.iupac.perfil .home{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iupac.perfil .citas{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iupac.perfil .agendar{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.iupac.perfil .editprf{
+    opacity: 1;
+    top: 1vh;
+    pointer-events: all;
+    position: absolute;
+    height: 100vh;
+    left: 250px;
+    width: calc(100% - 250px);
+    background: var(--body-color);
+    transition: var(--tran-05);
+}
+
+.iupac.perfil .editprf .text{
+    color: var(--color-encb);
+    padding: 10px 40px;
+}
+
+.iupac.perfil .editprf .formulario{
+    display: flex;
+    height: 100vh;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.iupac.perfil .editprf .formulario .containerep{
+    max-width: 700px;
+    width: 100%;
+    background: var(--sidebar-color);
+    padding: 25px 30px;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.iupac.perfil .editprf .containerep .titulo{
+    font-size: 25px;
+    font-weight: 500;    
+    position: relative;
+    color: var(--color-texth1);
+}
+
+.iupac.perfil .editprf .containerep .titulo::before{
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 50px;
+    background: linear-gradient(135deg, #2fc4f1, #02556e);
+    left: 0;
+    bottom: 0;
+    margin-bottom: -8px;
+}
+
+body.dark .iupac.perfil .editprf .containerep .titulo::before{
+    background: linear-gradient(135deg, #666666, #CCC);
+}
+
+.iupac.perfil .editprf .containerep form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+    color: var(--color-texth2);
+}
+
+.iupac.perfil .editprf .containerep form .user-details .input-box{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.iupac.perfil .editprf .containerep form .user-details .input-box .details{
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.iupac.perfil .editprf .containerep form .user-details .input-box input{
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid var(--forms-border);
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: var(--tran-03);
+    color: var(--text-color);
+    background: var(--sidebar-color);
+}
+
+.iupac.perfil .editprf .containerep form .user-details .input-box input:focus,
+.iupac.perfil .editprf .containerep form .user-details .input-box input:valid{
+    border-color: var(--color-border-img);
+}
+
+.iupac.perfil .editprf .containerep form .buttonep{
+    height: 45px;
+    margin: 45px 0;
+}
+
+.iupac.perfil .editprf .containerep form .buttonep input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #FFF;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    background: linear-gradient(135deg, #2fc4f1, #02556e);
+}
+
+body.dark .iupac.perfil .editprf .containerep form .buttonep input{
+    background: linear-gradient(135deg, #464646, #CCC);
+}
+
+.iupac.perfil .editprf .containerep form .buttonep input:hover{
+    background: linear-gradient(-135deg, #2fc4f1, #02556e);
+    cursor: pointer;
+    transition: var(--tran-05);
+}
+
+body.dark .iupac.perfil .editprf .containerep form .buttonep input:hover{    
+    background: linear-gradient(-135deg, #464646, #CCC);
+    transition: var(--tran-05);
+}
+
+@media (max-width: 584px){
+    .iupac.perfil .editprf .containerep{
+        max-width: 100%;
+    }
+
+    .iupac.perfil .editprf .containerep form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .iupac.perfil .editprf .containerep form .user-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+
+    .iupac.perfil .editprf .containerep form .user-details::-webkit-scrollbar{
+        width: 5px;
+    }
 }

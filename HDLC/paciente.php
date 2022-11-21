@@ -256,6 +256,44 @@
                 </section>
               </section>
 
+              <section class="editprf">
+                <h1 class="text">Editar perfil</h1>
+                <section class="formulario">
+                  <div class="containerep">
+                    <div class="titulo">Modifica los campos que quieras actualizar</div>
+                    <div class="forms">
+                      <form action="#">
+                        <div class="user-details">
+                          <div class="input-box">
+                            <span class="details">Correo:</span>
+                            <input type="text" placeholder="Correo actual" required>
+                          </div>
+                          <div class="input-box">
+                            <span class="details">Contraseña:</span>
+                            <input type="password" placeholder="Contraseña actual" required>
+                          </div>
+                          <div class="input-box">
+                            <span class="details">Fecha de nacimiento:</span>
+                            <input type="date" placeholder="Fecha registrada" required>
+                          </div>
+                          <div class="input-box">
+                            <span class="details">Nombre:</span>
+                            <input type="text" placeholder="Nombre actual" required>
+                          </div>
+                          <div class="input-box">
+                            <span class="details">Número de tel:</span>
+                            <input type="text" placeholder="Número actual" required>
+                          </div>
+                        </div>
+                        <div class="buttonep">
+                          <input type="submit" value="Actualizar">
+                        </div>
+                      </form>
+                    </div>
+                  </div> 
+                </section>
+              </section>
+
       </section>
 
       <script src="/assets/js/scriptIUP.js"></script>
