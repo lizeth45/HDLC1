@@ -458,6 +458,12 @@ body.dark .switch::before{
     pointer-events: none;
 }
 
+.iupac.menu .editprf,
+.iupac .editprf{
+    opacity: 0;
+    pointer-events: none;
+}
+
 .iupac .home,
 .iupac.menu .home{
     opacity: 1;
@@ -705,6 +711,11 @@ body.dark .card .button button:hover {
     pointer-events: none;
 }
 
+.iupac.cita .editprf{
+    opacity: 0;
+    pointer-events: none;
+}
+
 .iupac.cita .citas{
     opacity: 1;
     top: 1vh;
@@ -886,6 +897,12 @@ body.dark .iupac.cita .citas .formulario .containerc form .buttonc input:hover{
     opacity: 0;
     pointer-events: none;
 }
+
+.iupac.ctpr .editprf{
+    opacity: 0;
+    pointer-events: none;
+}
+
 
 .iupac.ctpr .agendar{
     opacity: 1;
