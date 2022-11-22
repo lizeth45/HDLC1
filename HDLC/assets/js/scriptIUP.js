@@ -9,31 +9,39 @@ const body = document.querySelector("body"),
       modeSwtich = body.querySelector(".toggle-switch"),
       modeText = body.querySelector(".mode-text");
 
-toggle.addEventListener("click", () => {
+if(toggle){
+  toggle.addEventListener("click", () => {
   sidebar.classList.toggle("close");
 });
+}
 
-sidebar.addEventListener("mouseenter", ()=>{
+if(sidebar){
+  sidebar.addEventListener("mouseenter", ()=>{
 
-  sidebar.classList.remove("close");
-})
+    sidebar.classList.remove("close");
+  })
+  
+  sidebar.addEventListener("mouseleave", ()=>{
+  
+    sidebar.classList.add("close");
+  })
+}
 
-sidebar.addEventListener("mouseleave", ()=>{
 
-  sidebar.classList.add("close");
-})
+if(modeSwtich){
+  modeSwtich.addEventListener("click", () => {
+    body.classList.toggle("dark");
+  
+    localStorage.setItem("darkMode", body.classList.contains("dark") ? "active" : "inactive");
+  
+    if (body.classList.contains("dark")) {
+      modeText.innerText = "Light Mode"
+    } else {
+      modeText.innerText = "Dark Mode"
+    }
+  });
+}
 
-modeSwtich.addEventListener("click", () => {
-  body.classList.toggle("dark");
-
-  localStorage.setItem("darkMode", body.classList.contains("dark") ? "active" : "inactive");
-
-  if (body.classList.contains("dark")) {
-    modeText.innerText = "Light Mode"
-  } else {
-    modeText.innerText = "Dark Mode"
-  }
-});
 
 const container = document.querySelector(".iupac");
 
