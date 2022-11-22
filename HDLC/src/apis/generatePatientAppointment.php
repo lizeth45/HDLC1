@@ -40,7 +40,12 @@
             $sentenciaDetalleC="INSERT INTO det_cita(asunto,fecha,hora,id_cita) values('$motive','$date','$hora.$sg',$idCita)";
             $queryDC=mysqli_query($con, $sentenciaDetalleC);   
             
-            Header("Location: paciente.php");
+            if(!$queryDC || !$queryCita){
+                Header("Location: paciente.php?error=Al generar cita");
+            }else{
+                Header("Location: paciente.php");
+            }
+
             
         }else{
             Header("Location: paciente.php?error=Nombre desconocido");
