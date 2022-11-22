@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
 const body = document.querySelector("body"),
       sidebar = body.querySelector(".sidebar"),
       toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
       modeSwtich = body.querySelector(".toggle-switch"),
       modeText = body.querySelector(".mode-text");
 
@@ -14,9 +13,15 @@ toggle.addEventListener("click", () => {
   sidebar.classList.toggle("close");
 });
 
-searchBtn.addEventListener("click", () => {
+sidebar.addEventListener("mouseenter", ()=>{
+
   sidebar.classList.remove("close");
-});
+})
+
+sidebar.addEventListener("mouseleave", ()=>{
+
+  sidebar.classList.add("close");
+})
 
 modeSwtich.addEventListener("click", () => {
   body.classList.toggle("dark");
@@ -74,6 +79,15 @@ function navigateTo(route) {
   container.className = 'iupac ' + route
 }
 
+function CancelarCitaPac(button) {
+  const value = button.dataset.id;
+
+  fetch("deleteCita.php?" + new URLSearchParams({ value }))
+    .then(data => {
+      location.reload();
+    });
+}
+
 function RequestDoctorDetail(button) {
   const value = button.dataset.id;
 
@@ -82,7 +96,7 @@ function RequestDoctorDetail(button) {
       console.log("RESPONSE FROM SERVER", data);
       document.querySelector(".info-docs .doctor-name").innerText = data.nombre;
       document.querySelector(".info-docs .doctor-spec").innerText = data.descripcion;
-      document.querySelector(".info-docs .long-desc").innerText = data.textoChingueAsuMadre;
+      document.querySelector(".info-docs .long-desc").innerText = data.infoDoc;
       document.querySelector(".info-docs .doctor-image").src = data.foto;
     });
 }

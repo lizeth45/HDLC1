@@ -3,6 +3,9 @@
   if(!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
     Header("Location: /");
   }
+  if($_SESSION['userType']!="paciente"){
+    Header("Location: /doctor.php");
+  }
   include("src/common/include.php");
   include("src/apis/databaseConnection.php");
   $con = connect();
@@ -48,10 +51,6 @@
 
           <div class="menu-bar">
               <div class="menu">
-                  <li class="search-box">
-                      <i class='bx bx-search-alt icon' ></i>
-                          <input type="text" placeholder="Buscar...">
-                  </li>
                   <ul class="menu-links">
                           <li class="Imenu">
                               <a href="javascript:void(0);">
@@ -156,7 +155,14 @@
                       <div class="user-details">
                         <div class="input-box">
                           <span class="details">Nombre:</span>
-                          <input name="name" type="text" placeholder="Ingresa tu nombre..." required>
+                            <?php
+                            $idUsuario=$_SESSION['userId'];
+                            $selectBP="SELECT u.nombre from usuarios as u inner join u_paciente as p on p.correo_pac=u.correo where p.id_paciente=$idUsuario";
+                            $qBP=mysqli_query($con,$selectBP);
+                            $rNamePaciente=mysqli_fetch_array($qBP); 
+                            
+                            echo "<input name=\"name\" type=\"text\" value=\"$rNamePaciente[0]\" readonly>";
+                            ?> 
                         </div>
                         <div class="input-box">
                           <span class="details">Asunto:</span>
@@ -170,18 +176,32 @@
                           <span class="details">Hora:</span>
                           <select name="hora" aria-label="Default select example">
                               <option selected>Elige la hora...</option>
-                              <option value="1">08:00</option>
-                              <option value="2">09:00</option>
-                              <option value="3">10:00</option>
-                              <option value="4">11:00</option>
-                              <option value="5">12:00</option>
-                              <option value="6">13:00</option>
-                              <option value="7">14:00</option>
+                              <option value="08:00">08:00</option>
+                              <option value="09:00">09:00</option>
+                              <option value="10:00">10:00</option>
+                              <option value="11:00">11:00</option>
+                              <option value="12:00">12:00</option>
+                              <option value="13:00">13:00</option>
+                              <option value="14:00">14:00</option>
                           </select>
                         </div>
                         <div class="input-box">
                           <span class="details">Doctor:</span>
-                          <input name="doctor" type="text" placeholder="Selecciona al doctor..." required>
+                          <select name="doctor" aria-label="Default select example">
+                            <option selected>Selecciona al doctor...</option>
+
+                                <?php
+                                    $sentenciaDoc="SELECT u.nombre, d.id_doctor FROM usuarios as u inner join u_doctor as d on u.correo=d.correo_doc";
+                                    $queryDOC=mysqli_query($con,$sentenciaDoc);
+                                    while($rowDoc=mysqli_fetch_array($queryDOC)){
+                                        $idDoc=$rowDoc['id_doctor'];
+                                        $NameDoc=$rowDoc['nombre'];
+                                        ?>
+                                        <option value="<?php echo $NameDoc; ?> "> <?php echo $NameDoc?>  </option>
+                                        <?php
+                                    }
+                                ?> 
+                          </select>
                         </div>
                       </div>
                       <input type="hidden" name="api" value="generateAppointment" />
@@ -197,63 +217,37 @@
             <section class="agendar">
                 <h1 class="text">Calendario de citas</h1>
                 <section class="citaconteiner">
-                  <div class="citac">
-                    <div class="image">
-                      <img src="/Icons/sylvie.jpeg" alt="doc1">
-                    </div>
-                    <div class="citainfo">
-                      <div class="titulo">Chema Padilla</div>
-                      <div class="subtitulo">Sexólogo</div>
-                      <div class="dates">
-                        <h3 class="text">Programada para el día:</h3>
-                        <section class="ctfc">
-                          <h5 class="fecha">14/09/2001</h5>
-                          <h5 class="horario">13:00 Hrs</h5>
-                        </section>          
+                <?php
+                    $idPaciente=$_SESSION['userId'];
+                    $sCitasP="SELECT c.id_cita, u.nombre, e.descripcion , dc.fecha, dc.hora from cita as c INNER JOIN usuarios as u ON c.correo_doc=u.correo INNER JOIN u_doctor as d on c.correo_doc=d.correo_doc inner join det_cita as dc on dc.id_cita=c.id_cita INNER join especialidad as e on d.id_esp=e.id_esp WHERE c.id_paciente=$idPaciente";
+                    $qsCitasP=mysqli_query($con,$sCitasP);
+
+                    while($rqsCitasP=mysqli_fetch_array($qsCitasP)){
+                      ?>
+                      <div class="citac">
+                        <div class="image">
+                          <img src="/assets/icons/userDoctor.png" alt="doc1">
+                        </div>
+                        <div class="citainfo">
+                          <div class="titulo"><?php echo $rqsCitasP[1]; ?></div>
+                          <div class="subtitulo"><?php echo $rqsCitasP[2]; ?></div>
+                          <div class="dates">
+                            <h3 class="text">Programada para el día:</h3>
+                            <section class="ctfc">
+                              <h5 class="fecha"><?php echo $rqsCitasP[3]; ?></h5>
+                              <h5 class="horario"><?php echo $rqsCitasP[4]; ?> Hrs</h5>
+                            </section>
+                          </div>
+                        </div>
+                        <div class="cancelar">
+                          <button class="cancelarBtn" data-id="<?php echo $rqsCitasP[0]; ?>" onclick="CancelarCitaPac(this)" >Cancelar</button>
+                        </div>
                       </div>
-                    </div>
-                    <div class="cancelar">
-                      <button class="cancelarBtn">Cancelar</button>
-                    </div>
-                  </div>
-                  <div class="citac">
-                    <div class="image">
-                      <img src="/Icons/sylvie.jpeg" alt="doc1">
-                    </div>
-                    <div class="citainfo">
-                      <div class="titulo">Chema Padilla</div>
-                      <div class="subtitulo">Sexólogo</div>
-                      <div class="dates">
-                        <h3 class="text">Programada para el día:</h3>
-                        <section class="ctfc">
-                          <h5 class="fecha">14/09/2001</h5>
-                          <h5 class="horario">13:00 Hrs</h5>
-                        </section>          
-                      </div>
-                    </div>
-                    <div class="cancelar">
-                      <button class="cancelarBtn">Cancelar</button>
-                    </div>
-                  </div>
-                  <div class="citac">
-                    <div class="image">
-                      <img src="/Icons/sylvie.jpeg" alt="doc1">
-                    </div>
-                    <div class="citainfo">
-                      <div class="titulo">Chema Padilla</div>
-                      <div class="subtitulo">Sexólogo</div>
-                      <div class="dates">
-                        <h3 class="text">Programada para el día:</h3>
-                        <section class="ctfc">
-                          <h5 class="fecha">14/09/2001</h5>
-                          <h5 class="horario">13:00 Hrs</h5>
-                        </section>          
-                      </div>
-                    </div>
-                    <div class="cancelar">
-                      <button class="cancelarBtn">Cancelar</button>
-                    </div>
-                  </div>
+
+                      <?php
+                    }
+                  ?>
+
                 </section>
               </section>
 
