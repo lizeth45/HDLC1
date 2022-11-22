@@ -16,7 +16,7 @@
         if(mailExists($con, $email)) Header("Location: /?mailUsed=1");
 
         $mainQuery = "INSERT INTO usuarios(correo,pass,nombre,num_tel,sexo,edad,fecha_nac) values ('$email','$pass','$name',$cellphone,'$gender',0,'$birthday')";
-        $secondaryQuery = "INSERT INTO u_doctor(correo_doc) values('$email')";
+        $secondaryQuery = "INSERT INTO u_doctor(correo_doc, id_esp, cedula) values('$email', $spec, '$profId')";
 
         $mainResult = mysqli_query($con, $mainQuery);
         $secondaryResult = mysqli_query($con, $secondaryQuery);
