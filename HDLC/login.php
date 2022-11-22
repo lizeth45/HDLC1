@@ -40,7 +40,7 @@
                             <button type="submit" class="btn btn-primary">Iniciar</button>
                         </div>
                         <div class="my-3">
-                            <span>¿No tienes cuenta? <a href="SelecTU.php">Regístrate</a></span> 
+                            <span>¿No tienes cuenta? <a href="register.php">Regístrate</a></span> 
                         </div>
                         <input type="hidden" name="api" value="login" />
                     </form>
