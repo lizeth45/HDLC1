@@ -3,6 +3,9 @@
   if(!isset($_SESSION['isLoggedIn']) || !$_SESSION['isLoggedIn']) {
     Header("Location: /");
   }
+  if($_SESSION['userType']!="doctor"){
+    Header("Location: /paciente.php");
+  }
   include("src/common/include.php");
   include("src/apis/databaseConnection.php");
   $con = connect();
@@ -31,10 +34,6 @@
 
           <div class="menu-bar">
               <div class="menu">
-                <li class="search-box">
-                    <i class='bx bx-search-alt icon' ></i>
-                        <input type="text" placeholder="Buscar...">
-                </li>
                   <ul class="menu-links">
                           <li class="Icitas-prox">
                               <a href="javascript:void(0);">
@@ -82,44 +81,61 @@
         <section class="agendar">
             <h1 class="text">Citas próximas</h1>
             <section class="citaconteiner">
-                <div class="citac">
+              <?php
+                $idDoctor=$_SESSION['userId'];
+                $sCitasD="SELECT u.nombre, dc.fecha, dc.hora from cita as c INNER JOIN usuarios as u ON c.correo_pac=u.correo INNER JOIN u_paciente as p on c.correo_pac=p.correo_pac inner join det_cita as dc on c.id_cita=dc.id_cita WHERE c.id_doctor=$idDoctor and dc.estado='PENDIENTE'";
+                $qsCitasD=mysqli_query($con,$sCitasD);
+                
+                while($rqsCitasd=mysqli_fetch_array($qsCitasD)){ ?>
+                  <div class="citac">
                     <div class="citainfo">
-                      <div class="titulo">Chema Padilla</div>
+                      <div class="titulo"><?php echo $rqsCitasd[0]; ?></div>
                       <div class="subtitulo">Paciente</div>
                       <div class="dates">
                         <h3 class="text">Programada para el día:</h3>
                         <section class="ctfc">
-                          <h5 class="fecha">14/09/2001</h5>
-                          <h5 class="horario">13:00 Hrs</h5>
+                          <h5 class="fecha"><?php echo $rqsCitasd[1]; ?></h5>
+                          <h5 class="horario"><?php echo $rqsCitasd[2];?> Hrs</h5>
                         </section>          
                       </div>
                     </div>
                   </div>
+                  <?php
+                }
+              ?>
             </section>
         </section>
 
         <section class="citas">
             <h1 class="text">Historial de citas</h1>
             <section class="citaconteiner">
+              <?php
+              $sHist="SELECT u.nombre, h.fecha, h.hora from historial as h INNER JOIN usuarios as u ON h.correo_pac=u.correo INNER JOIN u_paciente as p on h.correo_pac=p.correo_pac WHERE h.id_doctor=$idDoctor and h.estado='FINALIZADA'; ";
+              $qsHist=mysqli_query($con,$sHist);
+              
+              while($rqsHist=mysqli_fetch_array($qsHist)){ ?>
                 <div class="citac">
-                    <div class="citainfo">
-                      <div class="titulo">Chema Padilla</div>
-                      <div class="subtitulo">Paciente</div>
-                      <div class="dates">
-                        <h3 class="text">Estado:</h3>
-                        <section class="ctfc">
-                          <h5 class="fecha">Atendido</h5>
-                        </section>          
-                      </div>
-                      <div class="dates">
-                        <h3 class="text">Ocurrió el día:</h3>
-                        <section class="ctfc">
-                          <h5 class="fecha">14/09/2001</h5>
-                          <h5 class="horario">13:00 Hrs</h5>
-                        </section>          
-                      </div>
+                  <div class="citainfo">
+                    <div class="titulo"><?php echo $rqsHist[0]; ?></div>
+                    <div class="subtitulo">Paciente</div>
+                    <div class="dates">
+                      <h3 class="text">Estado:</h3>
+                      <section class="ctfc">
+                        <h5 class="fecha">Atendido</h5>
+                      </section>          
+                    </div>
+                    <div class="dates">
+                      <h3 class="text">Ocurrió el día:</h3>
+                      <section class="ctfc">
+                        <h5 class="fecha"><?php echo $rqsHist[1]; ?></h5>
+                        <h5 class="horario"><?php echo $rqsHist[2]; ?> Hrs</h5>
+                      </section>          
                     </div>
                   </div>
+                </div>
+                <?php
+               }
+            ?>
             </section>
         </section>
 
@@ -152,6 +168,7 @@
                         <input name="foto" type="file" disabled>
                       </div>
                     </div>
+                    <input type="hidden" name="api" value="updateDoctor">
                     <div class="buttonep">
                       <input type="submit" value="Actualizar">
                     </div>

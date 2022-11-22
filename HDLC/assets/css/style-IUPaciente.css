@@ -276,6 +276,7 @@ body.dark .popup .imagepop img{
 .sidebar header .image-text{
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 header .image-text .header-text{
@@ -370,6 +371,7 @@ body.dark .sidebar li a:hover .text{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    overflow: hidden;
 }
 
 .menu-bar::-webkit-scrollbar{

@@ -17,9 +17,26 @@
         if($result[0]) {
             // Found user
             $_SESSION['isLoggedIn'] = true;
-            $_SESSION['userId'] = '-1'; // TODO: Save userid from result
-            $_SESSION['userType'] = 'doctor'; // TODO: Save user type based on database query
-            Header("Location: /paciente.php");
+            $consultaDoc="SELECT COUNT(correo_doc) from u_doctor WHERE correo_doc='$username'";
+            $doc=mysqli_query($con,$consultaDoc);
+            $resDoc=mysqli_fetch_array($doc);
+            if($resDoc[0]==1){  //Si esta como doctor...
+                $consultaIDDoc="SELECT id_doctor from u_doctor WHERE correo_doc='$username'";
+                $docQ=mysqli_query($con,$consultaIDDoc);
+                $resIDDoc=mysqli_fetch_array($docQ);
+
+                $_SESSION['userId'] = $resIDDoc[0];
+                $_SESSION['userType'] = "doctor";
+                Header("Location: /doctor.php");
+            }else{
+                $consultaIDPac="SELECT id_paciente from u_paciente WHERE correo_pac='$username'";
+                $pacQ=mysqli_query($con,$consultaIDPac);
+                $resIDPac=mysqli_fetch_array($pacQ);
+
+                $_SESSION['userId'] = $resIDPac[0];
+                $_SESSION['userType'] = "paciente";
+                Header("Location: /paciente.php");
+            }
         } else {
             // Failed login
             Header("Location: login.php?err=1");
